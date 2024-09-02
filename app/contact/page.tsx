@@ -43,7 +43,7 @@ const ContactPage = () => {
         <Card className="max-w-md mx-auto">
           <CardHeader>
             <CardTitle>Contact Us</CardTitle>
-            <CardDescription>Fill out the form below and we'll get back to you soon.</CardDescription>
+            <CardDescription>Fill out the form below and we&apos;ll get back to you soon.</CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>

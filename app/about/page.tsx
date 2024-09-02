@@ -33,7 +33,7 @@ const AboutPage = () => {
             <CardTitle>Our Mission</CardTitle>
           </CardHeader>
           <CardContent>
-            <p>At DevBlog, we're passionate about web development and sharing knowledge. Our mission is to provide high-quality, accessible content that helps developers of all levels grow their skills and stay up-to-date with the latest trends.</p>
+            <p>At DevBlog, we&apos;re passionate about web development and sharing knowledge. Our mission is to provide high-quality, accessible content that helps developers of all levels grow their skills and stay up-to-date with the latest trends.</p>
           </CardContent>
         </Card>
 
