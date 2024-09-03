@@ -5,11 +5,20 @@ import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import matter from "gray-matter";
 import fs from 'fs'
+import path from 'path'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
 import OnThisPage from "@/components/OnThisPage";
 import rehypePrettyCode from "rehype-pretty-code";
 import { transformerCopyButton } from "@rehype-pretty/transformers";
+import { notFound } from 'next/navigation';
+
+export async function generateStaticParams() {
+  const files = fs.readdirSync(path.join(process.cwd(), 'content'));
+  return files.map(filename => ({
+    slug: filename.replace('.md', ''),
+  }));
+}
 
 const BlogPost = async ({ params }: { params: { slug: string } }) => {
   const processor = unified()
@@ -28,8 +37,15 @@ const BlogPost = async ({ params }: { params: { slug: string } }) => {
       ],
     })
 
-  const filePath = `content/${params.slug}.md`;
-  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const filePath = path.join(process.cwd(), 'content', `${params.slug}.md`);
+  let fileContent;
+  try {
+    fileContent = fs.readFileSync(filePath, 'utf-8');
+  } catch (error) {
+    console.error(`Error reading file: ${filePath}`, error);
+    notFound();
+  }
+
   const {data, content} = matter(fileContent)
   const htmlContent = (await processor.process(content)).toString();
 
