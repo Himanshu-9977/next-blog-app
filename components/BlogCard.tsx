@@ -15,7 +15,7 @@ type TBlogCard = {
   slug: string;
   title: string;
   description: string;
-  imgUrl?: string;
+  imgUrl: string;
 };
 
 interface BlogCardProps {
@@ -30,6 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
           src={blog.imgUrl ? blog.imgUrl : "/image.webp"}
           alt={blog.title}
           layout="fill"
+          sizes="(100vw, 100vh)"
           objectFit="cover"
           className="absolute top-0 left-0"
         />
