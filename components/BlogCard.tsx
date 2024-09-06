@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { Button } from "./ui/button";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import {
   Card,
@@ -29,6 +29,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ blog }) => {
         <Image
           src={blog.imgUrl ? blog.imgUrl : "/image.webp"}
           alt={blog.title}
+          priority
           layout="fill"
           sizes="(100vw, 100vh)"
           objectFit="cover"
